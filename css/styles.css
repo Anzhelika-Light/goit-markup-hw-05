@@ -179,7 +179,7 @@ body {
     content: "";
 
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
 
     width: 100%;
@@ -272,13 +272,18 @@ body {
     
     opacity: 1;
     visibility: visible;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.9);
 }
 
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
 
     width: 528px;
     height: 581px;
@@ -286,6 +291,8 @@ body {
     background-color: var(--modal-background-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-button {
@@ -408,7 +415,7 @@ img {
     margin-right: 30px;
 }
 
-.activity-picture {
+.activity-item {
     position: relative;
 }
 
@@ -573,7 +580,8 @@ img {
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.client-link:hover {
+.client-link:hover,
+.client-link:focus {
     color: var(--client-item-border-and-icon-hover);
     border: 1px solid var(--client-item-border-and-icon-hover);
 }
@@ -649,7 +657,7 @@ img {
 }
 
 .project-link:hover,
-.project-link.focus {
+.project-link:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -707,7 +715,8 @@ img {
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-link:hover .overlay-description {
+.project-link:hover .overlay-description,
+.project-link:focus .overlay-description {
     transform: translateY(0);
 }
 
